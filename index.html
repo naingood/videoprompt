@@ -3,102 +3,117 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Prompt Generator Video Iklan</title>
+  <title>VEO 3 Prompt Generator</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 </head>
-<body class="min-h-screen text-gray-900 font-sans p-6" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1470&q=80'); background-size: cover; background-position: center;">
-  <div class="max-w-xl mx-auto bg-white bg-opacity-80 rounded-lg shadow-lg p-6">
-    <h1 class="text-2xl font-bold mb-6 text-center text-pink-600">Prompt Generator untuk Video Iklan Portrait 8 Detik</h1>
-
-    <div class="mb-4">
-      <label for="background" class="block font-semibold mb-1">Pilih Latar Belakang:</label>
-      <select id="background" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400">
-        <option value="kota">Kota</option>
-        <option value="alam">Alam</option>
-        <option value="studio">Studio</option>
-        <option value="minimalis">Minimalis</option>
-      </select>
+<body class="min-h-screen bg-gradient-to-r from-green-200 via-blue-200 to-green-100 font-sans p-6">
+  <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8">
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="text-2xl font-bold text-gray-800">VEO 3 Prompt Generator</h1>
+      <button class="flex items-center bg-green-100 text-green-700 px-4 py-2 rounded-md hover:bg-green-200 transition">
+        <i data-feather="key" class="w-5 h-5 mr-2"></i> API Key Gemini
+      </button>
     </div>
 
-    <div class="mb-4">
-      <label for="music" class="block font-semibold mb-1">Pilih Musik Ambience:</label>
-      <select id="music" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400">
-        <option value="santai">Santai</option>
-        <option value="energik">Energik</option>
-        <option value="dramatis">Dramatis</option>
-        <option value="ceria">Ceria</option>
-      </select>
+    <p class="text-gray-600 mb-6">Hasilkan prompt yang akurat dan efektif untuk kreasi video Anda.</p>
+
+    <!-- Mode Toggle -->
+    <div class="flex space-x-4 mb-6">
+      <button class="px-4 py-2 rounded-md bg-green-100 text-green-700 font-semibold hover:bg-green-200 transition">Advanced Mode</button>
+      <button class="px-4 py-2 rounded-md bg-green-600 text-white font-semibold hover:bg-green-700 transition">Automatic Mode</button>
     </div>
 
-    <div class="mb-4">
-      <label for="apiKey" class="block font-semibold mb-1">API Key Gemini:</label>
-      <input type="text" id="apiKey" placeholder="Masukkan API Key Anda" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400" />
+    <!-- Automatic Prompt Generation -->
+    <div class="bg-gray-50 rounded-lg p-6 mb-6 shadow-inner">
+      <h2 class="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+        <i data-feather="settings" class="w-5 h-5 mr-2 text-green-600"></i> Automatic Prompt Generation
+      </h2>
+      <p class="text-gray-600 mb-4">Pilih kategori atau masukkan deskripsi singkat untuk menghasilkan prompt secara otomatis.</p>
+
+      <!-- Categories Grid -->
+      <div class="grid grid-cols-3 gap-4 mb-6">
+        <button class="bg-green-600 text-white rounded-lg p-4 flex flex-col items-center justify-center space-y-2 hover:bg-green-700 transition">
+          <i data-feather="home" class="w-6 h-6"></i>
+          <span class="font-semibold">Cerita Sinematik Otomatis</span>
+          <small class="text-green-200 text-center">Bangun alur cerita dramatis hanya dari 1 klik.</small>
+        </button>
+        <button class="bg-orange-600 text-white rounded-lg p-4 flex flex-col items-center justify-center space-y-2 hover:bg-orange-700 transition">
+          <i data-feather="zap" class="w-6 h-6"></i>
+          <span class="font-semibold">Fakta Unik Otomatis</span>
+          <small class="text-orange-200 text-center">10 Fakta atau 5 Fakta? Semua siap pakai.</small>
+        </button>
+        <button class="bg-red-600 text-white rounded-lg p-4 flex flex-col items-center justify-center space-y-2 hover:bg-red-700 transition">
+          <i data-feather="rocket" class="w-6 h-6"></i>
+          <span class="font-semibold">BLAST MODE</span>
+          <small class="text-red-200 text-center">Langsung ledakkan 10 ide konsep detail + sub-prompt dalam sekali klik.</small>
+        </button>
+        <button class="bg-teal-700 text-white rounded-lg p-4 flex flex-col items-center justify-center space-y-2 hover:bg-teal-800 transition">
+          <i data-feather="play" class="w-6 h-6"></i>
+          <span class="font-semibold">Video Pendek Viral Otomatis</span>
+          <small class="text-teal-300 text-center">Konten cepat, visual kuat, siap viral!</small>
+        </button>
+        <button class="bg-green-700 text-white rounded-lg p-4 flex flex-col items-center justify-center space-y-2 hover:bg-green-800 transition">
+          <i data-feather="ad" class="w-6 h-6"></i>
+          <span class="font-semibold">Iklan & Affiliate Otomatis</span>
+          <small class="text-green-300 text-center">Ciptakan iklan sinematik yang menjual.</small>
+        </button>
+        <button class="bg-blue-600 text-white rounded-lg p-4 flex flex-col items-center justify-center space-y-2 hover:bg-blue-700 transition">
+          <i data-feather="book" class="w-6 h-6"></i>
+          <span class="font-semibold">Tutorial & Educational Otomatis</span>
+          <small class="text-blue-300 text-center">Konten edukasi yang informatif dan menarik.</small>
+        </button>
+      </div>
+
+      <!-- Input Fields -->
+      <div class="mb-4">
+        <input type="text" placeholder="Contoh: Video tentang petualangan luar angkasa" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400" />
+      </div>
+      <div class="mb-4">
+        <select class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400">
+          <option>Pilih subkategori...</option>
+          <option>Subkategori 1</option>
+          <option>Subkategori 2</option>
+          <option>Subkategori 3</option>
+        </select>
+      </div>
+      <div class="mb-6">
+        <select class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400">
+          <option>Pilih mode...</option>
+          <option>Mode 1</option>
+          <option>Mode 2</option>
+          <option>Mode 3</option>
+        </select>
+      </div>
+
+      <button class="w-full bg-green-600 text-white font-semibold py-3 rounded hover:bg-green-700 transition">
+        <i data-feather="cpu" class="inline w-5 h-5 mr-2"></i> Buat Cerita Sinematik Otomatis dengan Gemini AI
+      </button>
     </div>
 
-    <div class="mb-6">
-      <button id="generateBtn" class="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 rounded transition">Generate Prompt</button>
-    </div>
-
-    <div class="mb-6">
-      <label class="block font-semibold mb-1">Prompt Hasil:</label>
-      <textarea id="promptResult" rows="6" readonly class="w-full border border-gray-300 rounded p-3 bg-gray-100 text-gray-700"></textarea>
-    </div>
-
-    <div class="flex space-x-4 justify-center">
-      <button id="copyBtn" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold py-2 px-4 rounded transition">Copy</button>
-      <button id="regenerateBtn" class="bg-green-400 hover:bg-green-500 text-white font-semibold py-2 px-4 rounded transition">Generate Ulang</button>
-      <button id="nextPromptBtn" class="bg-blue-400 hover:bg-blue-500 text-white font-semibold py-2 px-4 rounded transition">Prompt Selanjutnya</button>
+    <!-- Generated Prompt -->
+    <div class="bg-gray-50 rounded-lg p-6 shadow-inner">
+      <h3 class="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+        <i data-feather="file-text" class="w-5 h-5 mr-2 text-green-600"></i> Generated Prompt
+      </h3>
+      <textarea rows="6" readonly class="w-full border border-gray-300 rounded p-3 bg-green-50 text-gray-700 mb-4"></textarea>
+      <div class="flex space-x-4">
+        <button class="flex items-center bg-green-100 text-green-700 px-4 py-2 rounded hover:bg-green-200 transition">
+          <i data-feather="copy" class="w-4 h-4 mr-1"></i> Copy
+        </button>
+        <button class="flex items-center bg-green-100 text-green-700 px-4 py-2 rounded hover:bg-green-200 transition">
+          <i data-feather="refresh-cw" class="w-4 h-4 mr-1"></i> Generate Similar
+        </button>
+        <button class="flex items-center bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+          <i data-feather="play" class="w-4 h-4 mr-1"></i> Continue Generation
+        </button>
+      </div>
     </div>
   </div>
 
   <script>
-    // Placeholder script for button actions
-    const promptResult = document.getElementById('promptResult');
-    const generateBtn = document.getElementById('generateBtn');
-    const copyBtn = document.getElementById('copyBtn');
-    const regenerateBtn = document.getElementById('regenerateBtn');
-    const nextPromptBtn = document.getElementById('nextPromptBtn');
-
-    function generatePrompt() {
-      const background = document.getElementById('background').value;
-      const music = document.getElementById('music').value;
-      const apiKey = document.getElementById('apiKey').value.trim();
-
-      if (!apiKey) {
-        alert('Mohon masukkan API Key Gemini Anda.');
-        return;
-      }
-
-      // Simulasi generate prompt (ganti dengan panggilan API Gemini)
-      promptResult.value = `Prompt video iklan dengan latar belakang "${background}" dan musik ambience "${music}". Durasi 8 detik. (API Key: ${apiKey})`;
-    }
-
-    generateBtn.addEventListener('click', generatePrompt);
-
-    copyBtn.addEventListener('click', () => {
-      if (promptResult.value) {
-        navigator.clipboard.writeText(promptResult.value);
-        alert('Prompt berhasil disalin ke clipboard!');
-      }
-    });
-
-    regenerateBtn.addEventListener('click', () => {
-      generatePrompt();
-    });
-
-    nextPromptBtn.addEventListener('click', () => {
-      // Untuk prompt selanjutnya, bisa random pilihan latar dan musik
-      const backgrounds = ['kota', 'alam', 'studio', 'minimalis'];
-      const musics = ['santai', 'energik', 'dramatis', 'ceria'];
-
-      const randomBackground = backgrounds[Math.floor(Math.random() * backgrounds.length)];
-      const randomMusic = musics[Math.floor(Math.random() * musics.length)];
-
-      document.getElementById('background').value = randomBackground;
-      document.getElementById('music').value = randomMusic;
-
-      generatePrompt();
-    });
+    feather.replace();
   </script>
 </body>
 </html>
