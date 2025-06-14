@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prompt Generator Video Iklan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen text-gray-900 font-sans p-6" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1470&q=80'); background-size: cover; background-position: center;">
+  <div class="max-w-xl mx-auto bg-white bg-opacity-80 rounded-lg shadow-lg p-6">
+    <h1 class="text-2xl font-bold mb-6 text-center text-pink-600">Prompt Generator untuk Video Iklan Portrait 8 Detik</h1>
+
+    <div class="mb-4">
+      <label for="background" class="block font-semibold mb-1">Pilih Latar Belakang:</label>
+      <select id="background" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400">
+        <option value="kota">Kota</option>
+        <option value="alam">Alam</option>
+        <option value="studio">Studio</option>
+        <option value="minimalis">Minimalis</option>
+      </select>
+    </div>
+
+    <div class="mb-4">
+      <label for="music" class="block font-semibold mb-1">Pilih Musik Ambience:</label>
+      <select id="music" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400">
+        <option value="santai">Santai</option>
+        <option value="energik">Energik</option>
+        <option value="dramatis">Dramatis</option>
+        <option value="ceria">Ceria</option>
+      </select>
+    </div>
+
+    <div class="mb-4">
+      <label for="apiKey" class="block font-semibold mb-1">API Key Gemini:</label>
+      <input type="text" id="apiKey" placeholder="Masukkan API Key Anda" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400" />
+    </div>
+
+    <div class="mb-6">
+      <button id="generateBtn" class="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 rounded transition">Generate Prompt</button>
+    </div>
+
+    <div class="mb-6">
+      <label class="block font-semibold mb-1">Prompt Hasil:</label>
+      <textarea id="promptResult" rows="6" readonly class="w-full border border-gray-300 rounded p-3 bg-gray-100 text-gray-700"></textarea>
+    </div>
+
+    <div class="flex space-x-4 justify-center">
+      <button id="copyBtn" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold py-2 px-4 rounded transition">Copy</button>
+      <button id="regenerateBtn" class="bg-green-400 hover:bg-green-500 text-white font-semibold py-2 px-4 rounded transition">Generate Ulang</button>
+      <button id="nextPromptBtn" class="bg-blue-400 hover:bg-blue-500 text-white font-semibold py-2 px-4 rounded transition">Prompt Selanjutnya</button>
+    </div>
+  </div>
+
+  <script>
+    // Placeholder script for button actions
+    const promptResult = document.getElementById('promptResult');
+    const generateBtn = document.getElementById('generateBtn');
+    const copyBtn = document.getElementById('copyBtn');
+    const regenerateBtn = document.getElementById('regenerateBtn');
+    const nextPromptBtn = document.getElementById('nextPromptBtn');
+
+    function generatePrompt() {
+      const background = document.getElementById('background').value;
+      const music = document.getElementById('music').value;
+      const apiKey = document.getElementById('apiKey').value.trim();
+
+      if (!apiKey) {
+        alert('Mohon masukkan API Key Gemini Anda.');
+        return;
+      }
+
+      // Simulasi generate prompt (ganti dengan panggilan API Gemini)
+      promptResult.value = `Prompt video iklan dengan latar belakang "${background}" dan musik ambience "${music}". Durasi 8 detik. (API Key: ${apiKey})`;
+    }
+
+    generateBtn.addEventListener('click', generatePrompt);
+
+    copyBtn.addEventListener('click', () => {
+      if (promptResult.value) {
+        navigator.clipboard.writeText(promptResult.value);
+        alert('Prompt berhasil disalin ke clipboard!');
+      }
+    });
+
+    regenerateBtn.addEventListener('click', () => {
+      generatePrompt();
+    });
+
+    nextPromptBtn.addEventListener('click', () => {
+      // Untuk prompt selanjutnya, bisa random pilihan latar dan musik
+      const backgrounds = ['kota', 'alam', 'studio', 'minimalis'];
+      const musics = ['santai', 'energik', 'dramatis', 'ceria'];
+
+      const randomBackground = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+      const randomMusic = musics[Math.floor(Math.random() * musics.length)];
+
+      document.getElementById('background').value = randomBackground;
+      document.getElementById('music').value = randomMusic;
+
+      generatePrompt();
+    });
+  </script>
+</body>
+</html>
