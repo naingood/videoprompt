@@ -12,7 +12,7 @@
     <!-- Header -->
     <div class="flex justify-between items-center mb-6">
       <h1 class="text-2xl font-bold text-gray-800">VEO 3 Prompt Generator</h1>
-      <button class="flex items-center bg-green-100 text-green-700 px-4 py-2 rounded-md hover:bg-green-200 transition">
+      <button id="openApiKeyModal" class="flex items-center bg-green-100 text-green-700 px-4 py-2 rounded-md hover:bg-green-200 transition">
         <i data-feather="key" class="w-5 h-5 mr-2"></i> API Key Gemini
       </button>
     </div>
@@ -67,29 +67,59 @@
       </div>
 
       <!-- Input Fields -->
-      <div class="mb-4">
-        <input type="text" placeholder="Contoh: Video tentang petualangan luar angkasa" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400" />
-      </div>
-      <div class="mb-4">
-        <select class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400">
-          <option>Pilih subkategori...</option>
-          <option>Subkategori 1</option>
-          <option>Subkategori 2</option>
-          <option>Subkategori 3</option>
-        </select>
-      </div>
-      <div class="mb-6">
-        <select class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400">
-          <option>Pilih mode...</option>
-          <option>Mode 1</option>
-          <option>Mode 2</option>
-          <option>Mode 3</option>
-        </select>
-      </div>
-
-      <button class="w-full bg-green-600 text-white font-semibold py-3 rounded hover:bg-green-700 transition">
-        <i data-feather="cpu" class="inline w-5 h-5 mr-2"></i> Buat Cerita Sinematik Otomatis dengan Gemini AI
-      </button>
+      <form id="promptForm" class="space-y-4 mb-6">
+        <div>
+          <label class="block font-semibold mb-1" for="scenario">Scenario</label>
+          <textarea id="scenario" rows="2" placeholder="Deskripsikan skenario..." class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"></textarea>
+        </div>
+        <div>
+          <label class="block font-semibold mb-1" for="visualElements">Visual elements</label>
+          <textarea id="visualElements" rows="2" placeholder="Deskripsikan elemen visual..." class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"></textarea>
+        </div>
+        <div>
+          <label class="block font-semibold mb-1" for="timeOfDay">Time of day</label>
+          <input type="text" id="timeOfDay" placeholder="Misal: Malam" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400" />
+        </div>
+        <div>
+          <label class="block font-semibold mb-1" for="mood">Mood</label>
+          <input type="text" id="mood" placeholder="Misal: Penuh semangat dan optimisme" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400" />
+        </div>
+        <div>
+          <label class="block font-semibold mb-1" for="expression">Expression</label>
+          <input type="text" id="expression" placeholder="Misal: Puas dan bangga" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400" />
+        </div>
+        <div>
+          <label class="block font-semibold mb-1" for="actions">Actions</label>
+          <textarea id="actions" rows="2" placeholder="Deskripsikan aksi..." class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"></textarea>
+        </div>
+        <div>
+          <label class="block font-semibold mb-1" for="cameraMovement">Camera movement</label>
+          <input type="text" id="cameraMovement" placeholder="Misal: Zoom perlahan ke arah layar komputer" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400" />
+        </div>
+        <div>
+          <label class="block font-semibold mb-1" for="lighting">Lighting</label>
+          <input type="text" id="lighting" placeholder="Misal: Lampu sorot dari atas" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400" />
+        </div>
+        <div>
+          <label class="block font-semibold mb-1" for="dialogue">Dialogue (in Indonesian)</label>
+          <textarea id="dialogue" rows="2" placeholder="Masukkan dialog..." class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"></textarea>
+        </div>
+        <div>
+          <label class="block font-semibold mb-1" for="audio">Audio/music/effects</label>
+          <input type="text" id="audio" placeholder="Misal: Musik elektronik upbeat" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400" />
+        </div>
+        <div>
+          <label class="block font-semibold mb-1" for="style">Style</label>
+          <input type="text" id="style" placeholder="Misal: Modern, sinematik" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400" />
+        </div>
+        <div>
+          <label class="block font-semibold mb-1" for="additionalDetails">Additional details</label>
+          <textarea id="additionalDetails" rows="2" placeholder="Detail tambahan..." class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-green-600 text-white font-semibold py-3 rounded hover:bg-green-700 transition flex items-center justify-center">
+          <i data-feather="cpu" class="inline w-5 h-5 mr-2"></i> Buat Cerita Sinematik Otomatis dengan Gemini AI
+        </button>
+      </form>
     </div>
 
     <!-- Generated Prompt -->
@@ -112,8 +142,142 @@
     </div>
   </div>
 
+  <!-- Modal Popup API Key -->
+  <div id="apiKeyModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative">
+      <button id="closeModal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <h2 class="text-xl font-semibold mb-4 flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L15 12.75 9.75 8.5" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v18" />
+        </svg>
+        <span>API Key Settings</span>
+      </h2>
+      <div class="bg-green-100 rounded p-4 mb-4 text-sm text-green-900">
+        <p><strong>Use your own Google Gemini API key</strong></p>
+        <ol class="list-decimal list-inside space-y-1">
+          <li>Visit the <a href="https://ai.google/studio" target="_blank" class="underline text-blue-600">Google AI Studio</a></li>
+          <li>Sign in with your Google account</li>
+          <li>Click on "Get API key" or create a new API key</li>
+          <li>Copy the generated key and paste it below</li>
+          <li>The key should start with "Alza..."</li>
+        </ol>
+      </div>
+      <label for="modalApiKey" class="block font-semibold mb-1">Your Gemini API Key</label>
+      <input type="password" id="modalApiKey" class="w-full border border-gray-300 rounded px-3 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-green-400" />
+      <p class="text-xs text-gray-500 mb-4">Your API key is stored locally in your browser and never sent to our servers.</p>
+      <div class="flex justify-end space-x-4">
+        <button id="cancelBtn" class="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300 transition">Cancel</button>
+        <button id="saveBtn" class="px-4 py-2 rounded bg-green-600 text-white hover:bg-green-700 transition">Save Settings</button>
+      </div>
+      <p id="saveMessage" class="text-green-600 mt-4 hidden">Kunci API Anda telah disimpan.</p>
+    </div>
+  </div>
+
   <script>
     feather.replace();
+
+    const apiKeyModal = document.getElementById('apiKeyModal');
+    const openModalBtn = document.getElementById('openApiKeyModal');
+    const closeModalBtn = document.getElementById('closeModal');
+    const cancelBtn = document.getElementById('cancelBtn');
+    const saveBtn = document.getElementById('saveBtn');
+    const modalApiKeyInput = document.getElementById('modalApiKey');
+    const saveMessage = document.getElementById('saveMessage');
+
+    // Open modal
+    openModalBtn.addEventListener('click', () => {
+      apiKeyModal.classList.remove('hidden');
+      saveMessage.classList.add('hidden');
+      // Load saved key
+      const savedKey = localStorage.getItem('geminiApiKey');
+      if (savedKey) {
+        modalApiKeyInput.value = savedKey;
+      } else {
+        modalApiKeyInput.value = '';
+      }
+    });
+
+    // Close modal function
+    function closeModal() {
+      apiKeyModal.classList.add('hidden');
+      saveMessage.classList.add('hidden');
+    }
+
+    closeModalBtn.addEventListener('click', closeModal);
+    cancelBtn.addEventListener('click', closeModal);
+
+    // Save API key
+    saveBtn.addEventListener('click', () => {
+      const key = modalApiKeyInput.value.trim();
+      if (key.length === 0) {
+        alert('Mohon masukkan API Key Gemini Anda.');
+        return;
+      }
+      localStorage.setItem('geminiApiKey', key);
+      saveMessage.classList.remove('hidden');
+    });
+
+    // Generate prompt function from form inputs
+    function generatePromptFromForm() {
+      const scenario = document.getElementById('scenario').value.trim();
+      const visualElements = document.getElementById('visualElements').value.trim();
+      const timeOfDay = document.getElementById('timeOfDay').value.trim();
+      const mood = document.getElementById('mood').value.trim();
+      const expression = document.getElementById('expression').value.trim();
+      const actions = document.getElementById('actions').value.trim();
+      const cameraMovement = document.getElementById('cameraMovement').value.trim();
+      const lighting = document.getElementById('lighting').value.trim();
+      const dialogue = document.getElementById('dialogue').value.trim();
+      const audio = document.getElementById('audio').value.trim();
+      const style = document.getElementById('style').value.trim();
+      const additionalDetails = document.getElementById('additionalDetails').value.trim();
+
+      return `
+Create an 8-second high-definition video using Veo 3 AI.
+
+Scenario : ${scenario}
+
+Visual elements : ${visualElements}
+
+Time of day : ${timeOfDay}
+
+Mood : ${mood}
+
+Expression : ${expression}
+
+Actions : ${actions}
+
+Camera movement : ${cameraMovement}
+
+Lighting : ${lighting}
+
+Dialogue (in Indonesian) : ${dialogue}
+
+Audio/music/effects : ${audio}
+
+Style : ${style}
+
+Additional details : ${additionalDetails}
+
+Cinematic, realistic lighting, smooth camera motion, precise lipsync and character animation. Make sure the scene feels immersive and visually stunning.
+      `.trim();
+    }
+
+    // Hook generate button and textarea
+    const generateBtn = document.querySelector('button.bg-green-600.font-semibold');
+    const promptTextarea = document.querySelector('textarea[readonly]');
+    const promptForm = document.getElementById('promptForm');
+
+    generateBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const prompt = generatePromptFromForm();
+      promptTextarea.value = prompt;
+    });
   </script>
 </body>
 </html>
